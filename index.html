@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Info</title>
+    <script>
+        async function fetchInfo() {
+            let response = await fetch('/info');
+            let data = await response.json();
+            document.getElementById('hostname').innerText = data.hostname;
+            document.getElementById('platform').innerText = data.platform;
+            document.getElementById('uptime').innerText = data.uptime;
+            document.getElementById('cpu_usage').innerText = data.cpu_usage;
+            document.getElementById('free_memory').innerText = data.free_memory;
+            document.getElementById('total_memory').innerText = data.total_memory;
+            document.getElementById('used_disk').innerText = data.used_disk;
+            document.getElementById('free_disk').innerText = data.free_disk;
+            document.getElementById('total_disk').innerText = data.total_disk;
+        }
+        setInterval(fetchInfo, 5000);
+        window.onload = fetchInfo;
+    </script>
+</head>
+<body>
+    <h1>Server Information</h1>
+    <p><strong>Hostname:</strong> <span id="hostname">Loading...</span></p>
+    <p><strong>Platform:</strong> <span id="platform">Loading...</span></p>
+    <p><strong>Uptime:</strong> <span id="uptime">Loading...</span></p>
+    <p><strong>CPU Usage:</strong> <span id="cpu_usage">Loading...</span></p>
+    <p><strong>Free Memory:</strong> <span id="free_memory">Loading...</span></p>
+    <p><strong>Total Memory:</strong> <span id="total_memory">Loading...</span></p>
+    <p><strong>Used Disk:</strong> <span id="used_disk">Loading...</span></p>
+    <p><strong>Free Disk:</strong> <span id="free_disk">Loading...</span></p>
+    <p><strong>Total Disk:</strong> <span id="total_disk">Loading...</span></p>
+</body>
+</html>
